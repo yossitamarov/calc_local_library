@@ -1,0 +1,21 @@
+strategies_vector_length
+strategies_super_set
+	integer_num
+	real_num
+strategies_full_set
+strategies_lower_bound
+strategies_constraint_1
+
+payment_if_cond_1
+payment_if_true_1
+payment_if_false_1
+
+dimensions_row_category_name_1
+dimensions_row_if_cond_1
+dimensions_row_if_true_1
+dimensions_row_if_false_1
+
+dimensions_column_category_name_1
+dimensions_column_if_cond_1
+dimensions_column_if_true_1
+dimensions_column_if_false_1

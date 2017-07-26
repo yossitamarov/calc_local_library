@@ -1,0 +1,374 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-6">
+            <div class="well-block">
+                <div class="well-title">
+                    <h2>Eq Calc</h2>
+                </div>
+                <form>
+                    <!-- Form start -->
+                    <div class="row">
+                        <div class="panel panel-default">
+                            <div class="panel-heading"><b>Strategies</B></div>
+								<div class="col-md-10">
+									<div class="well-block">
+										<div class="well-title">
+											<div class="panel-heading">S=(s<sub>1</sub>,...,s<sub>n</sub>)
+											</div>
+											<div class="col-md-1 control-label" >n:=</div> 
+											<div class="input-group">
+												<input name="last_name" placeholder="Fill vector's length" class="form-control"  type="text">
+											</div>
+										</div>
+									</div>
+								</div>
+								<br>
+								<br>
+								<div class="col-md-10">
+									<div class="well-block">
+										<div class="well-title">									
+											<div class="col-md-1 control-label" >s<sub>i</sub><font face="Symbol">&#206;</font></div> 
+											<div class="input-group">
+												<div class="form-group">
+												<div class="input-group">
+													<select class="form-control" id="educationDate" name="educationDate[]">
+
+														<option value=""><span class="texhtml">ℤ</span></option>
+														<option value="2015"><span class="texhtml">ℝ</span></option>
+													</select>
+												</div>
+											</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-10">
+									<div class="well-block">
+										<div class="well-title">
+
+											<div class="col-md-1 control-label" >s<sub>i</sub><font face="Symbol">&ge;</font></div> 
+											<div class="input-group">
+												<input name="last_name" placeholder="Entry's lower bound" class="form-control"  type="text">
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-10">
+									<div class="well-block">
+										<div class="well-title">
+
+											<div class="col-md-1 control-label" >s<sub>i</sub><font face="Symbol">&#163;</font></div> 
+											<div class="input-group">
+												<input name="last_name" placeholder="Entry's upper bound" class="form-control"  type="text">
+											</div>
+										</div>
+									</div>
+								</div>
+
+
+
+
+                            <div class="panel-body">
+							
+
+                                <div id="if_fields">
+								<div class="panel-heading"><br><br><br></div>
+								<div class="panel-heading"><b>Constraints</B></div>
+
+                                </div>
+								<div class="col-sm-3 nopadding">
+								
+                                    <div class="form-group">
+                                        <h6>#1</h6>
+                                    </div>
+                                </div>
+                                <div class="col-sm-7 nopadding">
+								
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="if_cond" name="if_cond[]" value="" placeholder="Constraint">
+                                    </div>
+                                </div>
+
+
+                                <div class="col-sm-1 nopadding">
+								
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <div class="input-group-btn">
+                                                <button class="btn btn-success" type="button" onclick="if_fields();"> <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clear"></div>
+
+                            </div>
+                            <div class="panel-footer"><small>Press <span class="glyphicon glyphicon-plus gs"></span> to add another if field</small>, <small>Press <span class="glyphicon glyphicon-minus gs"></span> to remove the field </small></div>
+                        </div>
+                        
+                    </div>
+                </form>
+                <!-- form end -->
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="well-block">
+                <div class="well-title">
+                    <h2><br></h2>
+                </div>
+                <form>
+                    <!-- Form start -->
+                    <div class="row">
+                        <div class="panel panel-default">
+                            <div class="panel-heading"><b>Payment function</B></div>
+								<div class="col-md-10">
+									<div class="well-block">
+										<div class="well-title">
+											<div class="panel-heading">S:= First player's vector,  &nbsp  &nbsp s[i]:=Index i of vector S
+											</div>
+											<div class="panel-heading">R:= Second player's vector, r[i]:=Index i of vector R
+											</div>
+										</div>
+									</div>
+								</div>
+                            <div class="panel-body">
+                                <div id="if_fields_payment">
+                                </div>
+								<div class="col-sm-3 nopadding">
+                                    <div class="form-group">
+                                        <h6>#1</h6>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2 nopadding">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="if_cond" name="if_cond[]" value="" placeholder="if">
+                                    </div>
+                                </div>
+                                <div class="col-sm-3 nopadding">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="if_true" name="if_true[]" value="" placeholder="then">
+                                    </div>
+                                </div>
+                                <div class="col-sm-3 nopadding">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="if_false" name="if_false[]" value="" placeholder="else">
+										
+                                    </div>
+                                </div>
+                                <div class="col-sm-1 nopadding">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <div class="input-group-btn">
+                                                <button class="btn btn-success" type="button" onclick="if_fields_payment();"> <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="panel-footer"><small>Press <span class="glyphicon glyphicon-plus gs"></span> to add another if field</small>, <small>Press <span class="glyphicon glyphicon-minus gs"></span> to remove the field </small></div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading"><b>Dimensions</B></div>
+							<div class="col-md-10">
+								<div class="well-block">
+									<div class="well-title">
+										<div class="panel-heading">1<sup>st</sup> Dimension - Rows
+										</div>
+										<div class="panel-heading"><b>Categories names</b>
+										</div>
+										
+										
+									</div>
+								</div>
+								
+							</div>
+							<div class="panel-body">
+								<div id="if_fields_dimension_rows_names">
+                                </div>
+								<div class="col-sm-3 nopadding">
+
+									<div class="form-group">
+										<h6>#1</h6>
+									</div>
+								</div>
+								<div class="col-sm-7 nopadding">
+
+									<div class="form-group">
+										<input type="text" class="form-control" id="if_cond" name="if_cond[]" value="" placeholder="Category Name">
+									</div>
+								</div>
+
+								<div class="col-sm-1 nopadding">
+
+									<div class="form-group">
+										<div class="input-group">
+											<div class="input-group-btn">
+												<button class="btn btn-success" type="button" onclick="if_fields_dimension_rows_names();"> <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> </button>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="clear"></div>
+							</div>	
+							<div class="col-md-10">
+									<div class="well-block">
+										<div class="well-title">
+											<div class="panel-heading"><b>Defining conditions</b>
+											</div>
+											
+											
+										</div>
+									</div>
+									
+								</div>
+                            <div class="panel-body">
+                                <div id="if_fields_dimension_rows_cond">
+                                </div>
+								<div class="col-sm-3 nopadding">
+                                    <div class="form-group">
+                                        <h6>#1</h6>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2 nopadding">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="if_cond" name="if_cond[]" value="" placeholder="if">
+                                    </div>
+                                </div>
+                                <div class="col-sm-3 nopadding">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="if_true" name="if_true[]" value="" placeholder="then">
+                                    </div>
+                                </div>
+                                <div class="col-sm-3 nopadding">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="if_false" name="if_false[]" value="" placeholder="else">
+										
+                                    </div>
+                                </div>
+                                <div class="col-sm-1 nopadding">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <div class="input-group-btn">
+                                                <button class="btn btn-success" type="button" onclick="if_fields_dimension_rows_cond();"> <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clear"></div>
+								
+                            </div>
+							<div class="col-md-10">
+								<div class="well-block">
+									<div class="well-title">
+										<div class="panel-heading">2<sup>nd</sup> Dimension - Columns
+										</div>
+										<div class="panel-heading"><b>Categories names</b>
+										</div>
+										
+										
+									</div>
+								</div>
+								
+							</div>
+							<div class="panel-body">
+								<div id="if_fields_dimension_columns_names">
+                                </div>
+								<div class="col-sm-3 nopadding">
+
+									<div class="form-group">
+										<h6>#1</h6>
+									</div>
+								</div>
+								<div class="col-sm-7 nopadding">
+
+									<div class="form-group">
+										<input type="text" class="form-control" id="if_cond" name="if_cond[]" value="" placeholder="Category Name">
+									</div>
+								</div>
+
+								<div class="col-sm-1 nopadding">
+
+									<div class="form-group">
+										<div class="input-group">
+											<div class="input-group-btn">
+												<button class="btn btn-success" type="button" onclick="if_fields_dimension_columns_names();"> <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> </button>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="clear"></div>
+							</div>	
+							<div class="col-md-10">
+									<div class="well-block">
+										<div class="well-title">
+											<div class="panel-heading"><b>Defining conditions</b>
+											</div>
+											
+											
+										</div>
+									</div>
+									
+								</div>
+                            <div class="panel-body">
+                                <div id="if_fields_dimension_columns_cond">
+                                </div>
+								<div class="col-sm-3 nopadding">
+                                    <div class="form-group">
+                                        <h6>#1</h6>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2 nopadding">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="if_cond" name="if_cond[]" value="" placeholder="if">
+                                    </div>
+                                </div>
+                                <div class="col-sm-3 nopadding">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="if_true" name="if_true[]" value="" placeholder="then">
+                                    </div>
+                                </div>
+                                <div class="col-sm-3 nopadding">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="if_false" name="if_false[]" value="" placeholder="else">
+										
+                                    </div>
+                                </div>
+                                <div class="col-sm-1 nopadding">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <div class="input-group-btn">
+                                                <button class="btn btn-success" type="button" onclick="if_fields_dimension_columns_cond();"> <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clear"></div>
+								
+                            </div>
+                            <div class="panel-footer"><small>Press <span class="glyphicon glyphicon-plus gs"></span> to add another if field</small>, <small>Press <span class="glyphicon glyphicon-minus gs"></span> to remove the field </small></div>
+                        </div>
+                    </div>
+                </form>
+                <!-- form end -->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+Created by <a href="http://jituchauhan.com/">Jitu Chauhan</a>
+<script src="add_button.js"></script>
+
+</html>
