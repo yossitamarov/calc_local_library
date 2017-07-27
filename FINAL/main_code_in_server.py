@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect
 from django.views.decorators.csrf import csrf_exempt
 from django import forms
 import re
+import itertools
 import pycel
 from pycel.excelcompiler import *
 # from pycel.excelwrapper import ExcelOpxWrapper as ExcelWrapperImpl
@@ -258,6 +259,12 @@ dimensions_rows_conds1 = [dimensions_conds1[0]]
 dimensions_columns_conds1 = [dimensions_conds1[1]]
 
 
+def generate_all_strategies_combinations(n,full_set):
+    # Generate all combinations of size n from the set full_set
+    full_set_list = []
+    full_set_str = full_set.replace("{","[").replace("}","]")
+    exec "full_set_list="+full_set_str
+    return list(itertools.combinations(full_set_list, n))
 def full_calc(strategies_vector, dimensions_rows_conds, dimensions_columns_conds, dimensions_rows_categories_names,
               dimensions_columns_categories_names, dimensions_ordered_row, dimensions_ordered_col, payment_conds):
     dimensions_rows_conds = parse_conditions(dimensions_rows_conds)
@@ -289,9 +296,11 @@ def full_calc(strategies_vector, dimensions_rows_conds, dimensions_columns_conds
 
 
 class NameForm(forms.Form):
+    strategies_vector_length = forms.CharField(max_length=100, required=False)
+    strategies_full_set = forms.CharField(max_length=100, required=False)
+
 
     strategies_super_set = forms.CharField(max_length=100, required=False)
-    strategies_full_set = forms.CharField(max_length=100, required=False)
     strategies_lower_bound = forms.CharField(max_length=100, required=False)
     strategies_constraint_1 = forms.CharField(max_length=100, required=False)
     strategies_constraint_2 = forms.CharField(max_length=100, required=False)
@@ -524,6 +533,16 @@ def index(request):
                 if str(form.cleaned_data[field_name]) != '':
                     dimensions_columns_categories_names += [form.cleaned_data[field_name]]
             print str(dimensions_rows_conds)
+
+            strategies_vector_length = 0
+            strategies_full_set = ""
+            for datum in form.cleaned_data:
+                if ("strategies_vector_length" in datum):
+                    strategies_vector_length = form.cleaned_data[datum]
+                if ("strategies_full_set" in datum):
+                    strategies_full_set = form.cleaned_data[datum]
+            if strategies_vector_length == 0:
+
             # full_calc(strategies_vector1, dimensions_rows_conds1, dimensions_columns_conds1,dimensions_rows_categories_names1,dimensions_columns_categories_names1,dimensions_ordered_row1,dimensions_ordered_col1)
 
             full_calc(strategies_vectors, dimensions_rows_conds, dimensions_columns_conds,dimensions_rows_categories_names,dimensions_columns_categories_names,dimensions_ordered_row1,dimensions_ordered_col1,payment_conds1)
